@@ -1,3 +1,26 @@
 body {
   margin: 0;
 }
+
+#toolbar {
+  width: 100%;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  background-color: #2F2F2F;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.radControl {
+  margin: 5px;
+  background-color: #4F4F4F;
+  padding: 3px;
+}
+
+.titleTool {
+  margin: 5px;
+  padding: 3px;
+}
