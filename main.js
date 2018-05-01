@@ -10,6 +10,18 @@ canvas.height = window.innerHeight;
 
 context.lineWidth = radius * 2;
 
+var drawOnLoad = function() {
+    context.beginPath();
+    context.fillStyle = '#FFA500'
+    context.moveTo(175, 150);
+    context.lineTo(400, 175);
+    context.lineTo(500, 125);
+    context.lineTo(500, 625);
+    context.fill();
+    context.beginPath();
+    context.fillStyle = 'black'
+}
+
 var putPoint = function(e) {
   if (dragging && !erase) {
     context.globalCompositeOperation="source-over";

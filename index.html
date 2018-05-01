@@ -4,13 +4,16 @@
 		<title>Dartmouth Motion Learning</title>
     <link rel = "stylesheet" type = "text/css" href = "style.css" />
 	</head>
-	<body>
+	<body onLoad="drawOnLoad();">
 			<div id="toolbar">
-				<div id="title" class="titleTool">Radius: <span id="value">5</span></div>
-				<div id="dec" class="control">-</div>
-				<div id="inc" class="control">+</div>
+				<div id="instructions" class="titleTool">Try to trace the shape provided</div>
+				<div id="tools">
+					<div id="title" class="titleTool">Radius: <span id="value">5</span></div>
+					<div id="dec" class="control">-</div>
+					<div id="inc" class="control">+</div>
 
-				<div id="eraser" class="control">ERASE</div>
+					<div id="eraser" class="control">ERASE</div>
+				</div>
 
 			</div>
   		<canvas id="canvas">

@@ -12,6 +12,12 @@ body {
   color: white;
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+}
+
+#tools {
+  display: flex;
+  flex-direction: row;
   justify-content: flex-start;
 }
 
