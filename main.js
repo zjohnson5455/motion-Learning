@@ -1,7 +1,9 @@
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
-let radius = 4;
+let radius = 5;
 var dragging = false;
+var erase = false;
+let erButton = document.getElementById('eraser')
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -9,7 +11,8 @@ canvas.height = window.innerHeight;
 context.lineWidth = radius * 2;
 
 var putPoint = function(e) {
-  if (dragging) {
+  if (dragging && !erase) {
+    context.globalCompositeOperation="source-over";
     context.lineTo(e.clientX, e.clientY);
     context.stroke();
     context.beginPath();
@@ -17,6 +20,17 @@ var putPoint = function(e) {
     context.fill();
     context.beginPath();
     context.moveTo(e.clientX, e.clientY);
+  }
+  else if (dragging && erase) {
+    context.globalCompositeOperation="destination-out"; // https://stackoverflow.com/questions/25907163/html5-canvas-eraser-tool-without-overdraw-white-color
+    context.lineTo(e.clientX, e.clientY);
+    context.stroke();
+    context.beginPath();
+    context.arc(e.clientX, e.clientY, radius, 0, Math.PI * 2);
+    context.fill();
+    context.beginPath();
+    context.moveTo(e.clientX, e.clientY);
+
   }
 }
 
@@ -29,7 +43,16 @@ var disengage = function() {
   dragging = false;
   context.beginPath();
 }
-
+erButton.addEventListener('click', function() {
+  erase = !erase;
+  if(!erase) {
+    erButton.innerHTML = "ERASE"
+    context.beginPath();
+  }
+  else {
+    erButton.innerHTML = "DRAW"
+  }
+})
 canvas.addEventListener('mousedown', engage);
 canvas.addEventListener('mousemove', putPoint);
 canvas.addEventListener('mouseup', disengage);
