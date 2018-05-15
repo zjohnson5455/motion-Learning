@@ -1,5 +1,7 @@
-var canvas = document.getElementById('canvas');
+var canvas = document.getElementById('drawing');
 var context = canvas.getContext('2d');
+var backgroundCanvas = document.getElementById('background')
+var backgroundContext = backgroundCanvas.getContext('2d')
 let radius = 5;
 var dragging = false;
 var erase = false;
@@ -8,18 +10,21 @@ let erButton = document.getElementById('eraser')
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+backgroundCanvas.width = window.innerWidth;
+backgroundCanvas.height = window.innerHeight;
+
 context.lineWidth = radius * 2;
+backgroundContext.lineWidth = radius * 2;
 
 var drawOnLoad = function() {
-    context.beginPath();
-    context.fillStyle = '#FFA500'
-    context.moveTo(175, 150);
-    context.lineTo(400, 175);
-    context.lineTo(500, 125);
-    context.lineTo(500, 625);
-    context.fill();
-    context.beginPath();
-    context.fillStyle = 'black'
+    backgroundContext.beginPath();
+    backgroundContext.fillStyle = '#FFA500'
+    backgroundContext.moveTo(175, 150);
+    backgroundContext.lineTo(400, 175);
+    backgroundContext.lineTo(500, 125);
+    backgroundContext.lineTo(500, 625);
+    backgroundContext.fill();
+    backgroundContext.beginPath();
 }
 
 var putPoint = function(e) {

@@ -3,6 +3,23 @@ body {
   user-select: none;
 }
 
+#wrapperCanvas {
+    position: relative;
+}
+
+#wrapperCanvas canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#background {
+  z-index: 0;
+}
+#drawing {
+  z-index: 1;
+}
+
 #toolbar {
   width: 100%;
   padding: 10px;
@@ -13,6 +30,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  z-index: 2
 }
 
 #tools {
